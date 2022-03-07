@@ -120,5 +120,21 @@ namespace CabInvoiceGenerator
             }
         }
 
+        public InvoiceSummery AverageFare()
+        {
+            double averageFare = 0;
+            try
+            {
+                averageFare = Convert.ToDouble(CalculateFare(3.0, 8));
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return new InvoiceSummery(averageFare);
+        }
+
     }
 }

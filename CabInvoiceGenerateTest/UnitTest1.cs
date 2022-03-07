@@ -32,5 +32,16 @@ namespace CabInvoiceGenerateTest
 
             Assert.AreEqual(expectedSummery, summery);
         }
+        [Test]
+        public void GivenMultipleRideShouldReturnTotalFare()
+        {
+            invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+            Ride[] rides = { new Ride(3.0, 8), new Ride(1.8, 2), new Ride(2.0, 5) };
+
+            InvoiceSummery totalFare = invoiceGenerator.CalculateFare(rides);
+            InvoiceSummery expectedFare = new InvoiceSummery(3, 83.0);
+
+            Assert.AreEqual(expectedFare, totalFare);
+        }
     }
 }
